@@ -9,7 +9,7 @@ jobs:
       - name: test run
         run: |
           npm i -g @stoplight/prism-cli \
-          && prism mock docs.swagger.yaml -p 14278 &
+          && prism mock docs.swagger.yaml -p 14278
 #           curl http://127.0.0.1:14278/test
   generate-redoc:
     runs-on: ubuntu-latest
@@ -22,7 +22,9 @@ jobs:
           mv redoc-static.html ./docs/index.html
           git config --local user.email "github.actions@mynavi.jp"
           git config --local user.name "github.actions.bot"
-          git add ./docs/index.html
+      - name: commit
+        uses: actions/checkout@v2
+        run: |
           git commit -m 'swagger -> ./docs/index.html'
       - name: push
         uses: ad-m/github-push-action@master
