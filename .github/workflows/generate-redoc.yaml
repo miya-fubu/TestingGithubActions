@@ -2,7 +2,7 @@ name: generate-redoc
 on: 
   push:
     paths:
-      - ./docs/*
+      - 'docs/*'
 jobs:
   generate-redoc:
     runs-on: ubuntu-latest
