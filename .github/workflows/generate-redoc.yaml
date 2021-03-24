@@ -1,0 +1,29 @@
+name: generate-redoc
+on: [push]
+paths:
+  - ./docs/swagger.yaml
+jobs:
+  generate-redoc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: generate
+        run: |
+          npx redoc-cli bundle docs/swagger.yaml
+          mv redoc-static.html ./docs/index.html
+      - name: set git config
+        run: |
+          git config --local user.email "github.actions@example.com"
+          git config --local user.name "github.actions.bot"
+      - name: add
+        run: git add ./docs/index.html
+      - name: commit
+        run: git commit -m 'swagger -> ./docs/index.html'
+      - name: push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
