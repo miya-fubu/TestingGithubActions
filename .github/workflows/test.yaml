@@ -20,12 +20,9 @@ jobs:
         run: |
           npx redoc-cli docs/swagger.yaml
           mv redoc-static.html ./docs/index.html
-      - name: add
-        run:
           git config --local user.email "github.actions@mynavi.jp"
           git config --local user.name "github.actions.bot"
           git add ./docs/index.html
-      - name: commit 
           git commit -m 'swagger -> ./docs/index.html'
       - name: push
         uses: ad-m/github-push-action@master
