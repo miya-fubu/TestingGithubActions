@@ -11,7 +11,6 @@ jobs:
           npm i -g @stoplight/prism-cli
           prism mock docs.swagger.yaml -p 14278 &
           curl http://127.0.0.1:14278/test
-
   generate-redoc:
     runs-on: ubuntu-latest
     steps:
