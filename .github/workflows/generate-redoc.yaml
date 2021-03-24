@@ -2,7 +2,7 @@ name: generate-redoc
 on: 
   push:
     paths:
-      - ./docs/swagger.yaml
+      - ./docs/*
 jobs:
   generate-redoc:
     runs-on: ubuntu-latest
