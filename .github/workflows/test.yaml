@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-node@v1
       - name: generate
         run: |
-          npx redoc-cli docs/swagger.yaml
+          npx redoc-cli bundle docs/swagger.yaml
           mv redoc-static.html ./docs/index.html
           git config --local user.email "github.actions@mynavi.jp"
           git config --local user.name "github.actions.bot"
