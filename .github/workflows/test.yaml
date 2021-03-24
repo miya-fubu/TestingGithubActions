@@ -11,7 +11,7 @@ jobs:
       - name: prism install
         run: npm i -g @stoplight/prism-cli
       - name: activation prism
-        run: prism mock docs.swagger.yaml -p 14278 &
+        run: prism mock ./docs/swagger.yaml -p 14278 &
       - name: curl test
         run: curl http://127.0.0.1:14278/test
   generate-redoc:
