@@ -1,0 +1,16 @@
+openapi: 3.0.0
+info:
+  title: testing github actions
+  description: test
+  version: 0.0.1
+paths:
+  /test:
+    get:
+     summary: hoge
+     responses:
+      200:
+        description: retun string
+        content:
+          application/json:
+            schema:
+              type: string
