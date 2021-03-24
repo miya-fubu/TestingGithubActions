@@ -23,9 +23,7 @@ jobs:
           git config --local user.email "github.actions@mynavi.jp"
           git config --local user.name "github.actions.bot"
       - name: commit
-        uses: actions/checkout@v2
-        run: |
-          git commit -m 'swagger -> ./docs/index.html'
+        run: git commit -m 'swagger -> ./docs/index.html'
       - name: push
         uses: ad-m/github-push-action@master
         with:
