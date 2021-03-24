@@ -14,3 +14,4 @@ paths:
           application/json:
             schema:
               type: string
+              example: ex
