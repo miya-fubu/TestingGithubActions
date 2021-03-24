@@ -6,11 +6,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - name: test run
-        run: |
-          npm i -g @stoplight/prism-cli \
-          && prism mock docs.swagger.yaml -p 14278
-#           curl http://127.0.0.1:14278/test
+      - name: prism install
+        run: npm i -g @stoplight/prism-cli
+      - name: activation prism
+        run: prism mock docs.swagger.yaml -p 14278
+      - name: curl test
+        run: curl http://127.0.0.1:14278/test
   generate-redoc:
     runs-on: ubuntu-latest
     steps:
@@ -20,10 +21,11 @@ jobs:
         run: |
           npx redoc-cli bundle docs/swagger.yaml
           mv redoc-static.html ./docs/index.html
-          git config --local user.email "github.actions@mynavi.jp"
-          git config --local user.name "github.actions.bot"
       - name: commit
-        run: git commit -m 'swagger -> ./docs/index.html'
+        run: |
+          git config --local user.email "github.actions@example.com"
+          git config --local user.name "github.actions.bot"
+          git commit -m 'swagger -> ./docs/index.html'
       - name: push
         uses: ad-m/github-push-action@master
         with:
