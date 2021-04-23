@@ -1,5 +1,5 @@
 name: activate-prism
-on: [push]
+on: push
 jobs:
   prism-test:
     runs-on: ubuntu-latest
