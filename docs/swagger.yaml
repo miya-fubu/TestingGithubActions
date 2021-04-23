@@ -6,7 +6,7 @@ info:
 paths:
   /test:
     get:
-     summary: hoge
+     summary: fugo
      responses:
       200:
         description: retun string
